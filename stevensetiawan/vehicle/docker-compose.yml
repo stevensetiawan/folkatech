@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  user:
+    container_name: user
+    restart: always
+    build: ./
+    env_file: ./.env
+    ports:
+      - "3002:3002"
+    links:
+      - mongo
+    environment:
+      TZ: 'Asia/Jakarta'
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
